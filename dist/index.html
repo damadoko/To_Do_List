@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"/>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <title>TO DO LIST</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="app">
+                <div class="app-report">
+                    <h1>Report:</h1>
+                    <div class="report">
+                        <p>Total tasks:</p>
+                        <input id="total" value="">
+                    </div>
+                    <div class="report">
+                        <p>Completed tasks:</p>
+                        <input id="completed" value="">
+                    </div>
+                    <div class="report">
+                        <p>Remaning tasks:</p>
+                        <input id="remaining" value="">
+                    </div>
+                </div>
+                <h1 class="app-title">To do list</h1>
+                <form>
+                    <label for="type">Filter by:</label>
+                    <select name="type" id="filter-select">
+                        <option id="option-0" value="all">All tasks</option>
+                        <option id="option-1" value="done">Done task</option>
+                        <option id="option-1" value="remain">Remain tasks</option>
+                    </select>
+                </form>
+                <form>
+                    <input class="app-input" type="text" placeholder="Add a new todo..."/>
+                    <button class="app-add" type="button">ADD</button>
+                </form>
+                <div
+                    class="app-wrapper"><!-- Tasks -->
+                </div>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>

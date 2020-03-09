@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif; }
+
+html,
+body {
+  color: #61dafb;
+  background: #2d2d2d; }
+
+/* Utilities */
+.container {
+  max-width: 600px;
+  margin: 0 auto; }
+
+.done {
+  color: #f04545;
+  text-decoration: line-through; }
+
+.text-red {
+  color: #f04545; }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  margin: 0 0.5rem; }
+  .app-report {
+    margin-top: 2rem; }
+    .app-report .report {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 0; }
+      .app-report .report input {
+        text-align: center;
+        border: none;
+        background: transparent;
+        color: #61dafb;
+        font-size: 1.1rem; }
+  .app-title {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 2rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.5s ease; }
+    .app-title:hover {
+      transform: scale(1.1);
+      border-color: #61dafb; }
+  .app-wrapper {
+    width: 100%;
+    background-color: #f3f3f3;
+    border: 1px solid #61dafb;
+    border-radius: 5px;
+    margin-bottom: 2rem; }
+    .app-wrapper .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid #2d2d2d;
+      transition: all 0.4s ease-in-out; }
+      .app-wrapper .task:hover {
+        color: #2d2d2d;
+        font-weight: bold; }
+      .app-wrapper .task:last-child {
+        border-bottom: none; }
+      .app-wrapper .task-wrapper {
+        display: flex;
+        max-width: 80%;
+        text-align: center;
+        justify-content: center;
+        align-items: center; }
+      .app-wrapper .task-content {
+        margin-left: 1rem;
+        overflow: hidden;
+        text-align: justify;
+        border: 0;
+        background: transparent; }
+      .app-wrapper .task .fa-times {
+        color: #2d2d2d;
+        transition: all 0.25s ease-in-out; }
+        .app-wrapper .task .fa-times:hover {
+          transform: rotate(90deg) scale(1.5); }
+  .app form {
+    display: flex;
+    width: 100%; }
+  .app-input {
+    padding: 0.75rem;
+    border-radius: 5px;
+    width: 90%;
+    font-size: 1.3rem;
+    color: #61dafb; }
+  .app-add {
+    width: auto;
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 5px;
+    transition: all 0.4s ease;
+    font-size: 1.3rem;
+    font-weight: bold; }
+    .app-add:hover {
+      color: #61dafb; }
