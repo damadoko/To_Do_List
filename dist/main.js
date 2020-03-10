@@ -109,15 +109,21 @@ const UICtrl = (() => {
   };
 
   const taskDoneUI = (status, cont, tick) => {
-    // console.log(content.classList);
+    const disableInput = tick.parentNode.children[1];
+    const showDeleteIcon = tick.parentNode.parentNode.children[1];
+    console.log(showDeleteIcon);
     if (status.value === "done") {
       cont.classList.remove("done");
       tick.classList.remove("text-red");
       status.value = "notDone";
+      disableInput.removeAttribute("disabled", "disabled");
+      showDeleteIcon.style.display = "none";
     } else {
       cont.classList.add("done");
       tick.classList.add("text-red");
       status.value = "done";
+      disableInput.setAttribute("disabled", "disabled");
+      showDeleteIcon.style.display = "inline-block";
     }
   };
 
@@ -266,7 +272,7 @@ const appCtrl = ((mod, UI) => {
   const updateTaskCtrl = event => {
     const content = event.target.value;
     const ElementIndex = event.target.parentNode.parentNode.id;
-    console.log(ElementIndex);
+    console.log(event.target.classList);
     // Change task description in model
     mod.changeTaskDesInModel(ElementIndex, content);
   };

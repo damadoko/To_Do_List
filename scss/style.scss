@@ -1,8 +1,9 @@
-$primary-color: #2d2d2d;
-$secondary-color: #f3f3f3;
-$text-color: #61dafb;
+$primary-color: #ffffff;
+$secondary-color: #61C08D;
+$text-color: #030303;
 $font: "Montserrat", sans-serif;
-$done-color: #f04545;
+$done-color: #d2d2d2;
+$max-width: 600px;
 
 * {
   margin: 0;
@@ -19,13 +20,14 @@ body {
 
 /* Utilities */
 .container {
-  max-width: 600px;
+  max-width: $max-width;
   margin: 0 auto;
 }
 
 .done {
-  color: $done-color;
-  text-decoration: line-through;
+  color: $done-color !important;
+  opacity: 0.5;
+  // text-decoration: line-through;
 }
 
 .text-red {
@@ -33,21 +35,53 @@ body {
 }
 
 // main styling
+#main-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid $secondary-color;
+  transition: all 0.5s ease;
+
+  h1 {
+    padding: 2rem 7rem;
+  }
+  &:hover {
+    transform: scale(1.1);
+    border-color: $text-color;
+  }
+}
+
+
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
+  height: 100vh;
   margin: 0 0.5rem;
+  position: relative;
+
+  &-filter {
+    margin-top: 1rem;
+    display: block !important;
+    text-align: right;
+  }
 
   &-report {
-    margin-top: 2rem;
+    position: fixed;
+    bottom: 10vh;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
     .report {
-      display: flex;
-      justify-content: space-between;
+      // display: flex;
+      // justify-content: space-between;
       align-items: center;
       margin: 0.5rem 0;
 
@@ -56,43 +90,39 @@ body {
         border: none;
         background: transparent;
         color: $text-color;
-        font-size: 1.1rem;
+        font-size: 2rem;
+        font-weight: 900;
       }
-    }
-  }
-  
-  &-title {
-    text-transform: uppercase;
-    text-align: center;
-    margin: 2rem 0;
-    border-bottom: 2px solid transparent;
-    transition: all 0.5s ease;
-
-    &:hover {
-      transform: scale(1.1);
-      border-color: $text-color;
     }
   }
 
   &-wrapper {
+    max-height: 50vh;
+    overflow-y: auto;
+    background-color: transparent;
+    border: 1px solid transparent;
+    // border-radius: 5px;
+    margin: 1rem 0;
     width: 100%;
-    background-color: $secondary-color;
-    border: 1px solid $text-color;
-    border-radius: 5px;
-    margin-bottom: 2rem;
     .task {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      border-bottom: 1px solid $primary-color;
+      padding: .5rem;
+      border-bottom: 1px solid $done-color;
       transition: all 0.4s ease-in-out;
+      width: 100%;
+
       &:hover {
-        color: $primary-color;
+        transform: translateZ(10px) translateX(5px);
         font-weight: bold;
       }
       &:last-child {
         border-bottom: none;
+      }
+
+      &[data-status="done"] .fa-times {
+        display: inline-block;
       }
 
       &-wrapper {
@@ -101,22 +131,27 @@ body {
         text-align: center;
         justify-content: center;
         align-items: center;
+        color: $secondary-color;
       }
 
       &-content {
-        margin-left: 1rem;
+        margin-left: 2rem;
         overflow: hidden;
         text-align: justify;
         border: 0;
         background: transparent;
+        font-size: 1.25rem;
+        color: $secondary-color;
       }
 
       .fa-times {
-        color: $primary-color;
+        color: $done-color;
+        margin-right: .5rem;
         transition: all 0.25s ease-in-out;
         &:hover {
           transform: rotate(90deg) scale(1.5);
         }
+        display: none;
       }
     }
   }
@@ -128,22 +163,62 @@ body {
 
   &-input {
     padding: 0.75rem;
-    border-radius: 5px;
+    border-radius: 50px;
     width: 90%;
     font-size: 1.3rem;
     color: $text-color;
   }
   &-add {
-    width: auto;
+    position: relative;
+    width: 10%;
     display: inline-block;
     padding: 1rem;
-    border-radius: 5px;
+    margin-left: 1rem;
+    border-radius: 50%;
+    background: $secondary-color;
     transition: all 0.4s ease;
     font-size: 1.3rem;
     font-weight: bold;
 
-    &:hover {
-      color: $text-color;
+    &::before {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 30%;
+      height: 4px;
+      width: 40%;
+      background-color: $primary-color;
+      transition: all .7s ease-in-out;
+      transform: translateY(-2px);
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 30%;
+      height: 4px;
+      width: 40%;
+      background-color: $primary-color;
+      transition: all .7s ease-in-out;
+      transform: translateY(-2px) rotate(90deg);
+    }
+
+    &:hover::before {
+      transform: translateY(-2px) rotate(180deg)
+    }
+    &:hover::after {
+      transform: translateY(-2px) rotate(270deg)
     }
   }
+}
+
+#myVideo { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 }

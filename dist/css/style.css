@@ -6,8 +6,8 @@
 
 html,
 body {
-  color: #61dafb;
-  background: #2d2d2d; }
+  color: #030303;
+  background: #ffffff; }
 
 /* Utilities */
 .container {
@@ -15,75 +15,98 @@ body {
   margin: 0 auto; }
 
 .done {
-  color: #f04545;
-  text-decoration: line-through; }
+  color: #d2d2d2 !important;
+  opacity: 0.5; }
 
 .text-red {
-  color: #f04545; }
+  color: #d2d2d2; }
+
+#main-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #61C08D;
+  transition: all 0.5s ease; }
+  #main-header h1 {
+    padding: 2rem 7rem; }
+  #main-header:hover {
+    transform: scale(1.1);
+    border-color: #030303; }
 
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
-  margin: 0 0.5rem; }
+  height: 100vh;
+  margin: 0 0.5rem;
+  position: relative; }
+  .app-filter {
+    margin-top: 1rem;
+    display: block !important;
+    text-align: right; }
   .app-report {
-    margin-top: 2rem; }
+    position: fixed;
+    bottom: 10vh;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
     .app-report .report {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
       margin: 0.5rem 0; }
       .app-report .report input {
         text-align: center;
         border: none;
         background: transparent;
-        color: #61dafb;
-        font-size: 1.1rem; }
-  .app-title {
-    text-transform: uppercase;
-    text-align: center;
-    margin: 2rem 0;
-    border-bottom: 2px solid transparent;
-    transition: all 0.5s ease; }
-    .app-title:hover {
-      transform: scale(1.1);
-      border-color: #61dafb; }
+        color: #030303;
+        font-size: 2rem;
+        font-weight: 900; }
   .app-wrapper {
-    width: 100%;
-    background-color: #f3f3f3;
-    border: 1px solid #61dafb;
-    border-radius: 5px;
-    margin-bottom: 2rem; }
+    max-height: 50vh;
+    overflow-y: auto;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin: 1rem 0;
+    width: 100%; }
     .app-wrapper .task {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      border-bottom: 1px solid #2d2d2d;
-      transition: all 0.4s ease-in-out; }
+      padding: .5rem;
+      border-bottom: 1px solid #d2d2d2;
+      transition: all 0.4s ease-in-out;
+      width: 100%; }
       .app-wrapper .task:hover {
-        color: #2d2d2d;
+        transform: translateZ(10px) translateX(5px);
         font-weight: bold; }
       .app-wrapper .task:last-child {
         border-bottom: none; }
+      .app-wrapper .task[data-status="done"] .fa-times {
+        display: inline-block; }
       .app-wrapper .task-wrapper {
         display: flex;
         max-width: 80%;
         text-align: center;
         justify-content: center;
-        align-items: center; }
+        align-items: center;
+        color: #61C08D; }
       .app-wrapper .task-content {
-        margin-left: 1rem;
+        margin-left: 2rem;
         overflow: hidden;
         text-align: justify;
         border: 0;
-        background: transparent; }
+        background: transparent;
+        font-size: 1.25rem;
+        color: #61C08D; }
       .app-wrapper .task .fa-times {
-        color: #2d2d2d;
-        transition: all 0.25s ease-in-out; }
+        color: #d2d2d2;
+        margin-right: .5rem;
+        transition: all 0.25s ease-in-out;
+        display: none; }
         .app-wrapper .task .fa-times:hover {
           transform: rotate(90deg) scale(1.5); }
   .app form {
@@ -91,17 +114,51 @@ body {
     width: 100%; }
   .app-input {
     padding: 0.75rem;
-    border-radius: 5px;
+    border-radius: 50px;
     width: 90%;
     font-size: 1.3rem;
-    color: #61dafb; }
+    color: #030303; }
   .app-add {
-    width: auto;
+    position: relative;
+    width: 10%;
     display: inline-block;
     padding: 1rem;
-    border-radius: 5px;
+    margin-left: 1rem;
+    border-radius: 50%;
+    background: #61C08D;
     transition: all 0.4s ease;
     font-size: 1.3rem;
     font-weight: bold; }
-    .app-add:hover {
-      color: #61dafb; }
+    .app-add::before {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 30%;
+      height: 4px;
+      width: 40%;
+      background-color: #ffffff;
+      transition: all .7s ease-in-out;
+      transform: translateY(-2px); }
+    .app-add::after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 30%;
+      height: 4px;
+      width: 40%;
+      background-color: #ffffff;
+      transition: all .7s ease-in-out;
+      transform: translateY(-2px) rotate(90deg); }
+    .app-add:hover::before {
+      transform: translateY(-2px) rotate(180deg); }
+    .app-add:hover::after {
+      transform: translateY(-2px) rotate(270deg); }
+
+#myVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; }

@@ -9,25 +9,16 @@
         <title>TO DO LIST</title>
     </head>
     <body>
+        <div id="main-header">
+            <h1>Tasks</h1>
+        </div>
         <div class="container">
             <div class="app">
-                <div class="app-report">
-                    <h1>Report:</h1>
-                    <div class="report">
-                        <p>Total tasks:</p>
-                        <input id="total" value="">
-                    </div>
-                    <div class="report">
-                        <p>Completed tasks:</p>
-                        <input id="completed" value="">
-                    </div>
-                    <div class="report">
-                        <p>Remaning tasks:</p>
-                        <input id="remaining" value="">
-                    </div>
-                </div>
-                <h1 class="app-title">To do list</h1>
                 <form>
+                    <input class="app-input" type="text" placeholder="Add a new todo..."/>
+                    <button class="app-add" type="button"></button>
+                </form>
+                <form class="app-filter">
                     <label for="type">Filter by:</label>
                     <select name="type" id="filter-select">
                         <option id="option-0" value="all">All tasks</option>
@@ -35,16 +26,26 @@
                         <option id="option-1" value="remain">Remain tasks</option>
                     </select>
                 </form>
-                <form>
-                    <input class="app-input" type="text" placeholder="Add a new todo..."/>
-                    <button class="app-add" type="button">ADD</button>
-                </form>
                 <div
                     class="app-wrapper"><!-- Tasks -->
+                </div>
+                <div class="app-report">
+                    <div class="report">
+                        <input id="total" value="">
+                        <p>Total tasks</p>
+                    </div>
+                    <div class="report">
+                        <input id="completed" value="">
+                        <p>Completed tasks</p>
+                    </div>
+                    <div class="report">
+                        <input id="remaining" value="">
+                        <p>Remaning tasks</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <script src="main.js"></script>
     </body>
-</html>
+</html></body></html>
