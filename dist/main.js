@@ -56,10 +56,21 @@ const model = (() => {
     };
   };
 
+  const calculateDoneTasks = () => {
+    const arr = [];
+    data.filter(item => {
+      if (item.status === "done") {
+        arr.push(item);
+      }
+    });
+    return arr;
+  };
+
   const calculateFiltedTask = () => {
     const doneTasksArr = data.filter(item => item.status === "done");
     const remainTasksArr = data.filter(item => item.status === "notDone");
     return {
+      allTaskArr: data,
       doneArr: doneTasksArr,
       remainArr: remainTasksArr
     };
@@ -72,6 +83,7 @@ const model = (() => {
     changeTaskDesInModel: changeTaskDesModel,
     calReport: calculateReport,
     filtedTaskArr: calculateFiltedTask,
+    calDoneTask: calculateDoneTasks,
     data: data
   };
 })();
@@ -87,7 +99,8 @@ const UICtrl = (() => {
     reportTotal: "#total",
     reportComptele: "#completed",
     reportRemain: "#remaining",
-    taskFilter: "#filter-select"
+    taskFilter: "#filter-select",
+    clearTasks: ".clear-all"
   };
   // getInput:
   const getUserInput = () => {
@@ -111,7 +124,6 @@ const UICtrl = (() => {
   const taskDoneUI = (status, cont, tick) => {
     const disableInput = tick.parentNode.children[1];
     const showDeleteIcon = tick.parentNode.parentNode.children[1];
-    console.log(showDeleteIcon);
     if (status.value === "done") {
       cont.classList.remove("done");
       tick.classList.remove("text-red");
@@ -214,10 +226,15 @@ const appCtrl = ((mod, UI) => {
       });
     });
 
-    // Filter tasks evemt
+    // Filter tasks event
     document
       .querySelector(DOMs.taskFilter)
       .addEventListener("change", filterTaskCtrl);
+
+    // Clear tasks event
+    document
+      .querySelector(DOMs.clearTasks)
+      .addEventListener("click", clearDoneTasksCtrl);
   };
 
   const addTaskCtrl = () => {
@@ -239,7 +256,7 @@ const appCtrl = ((mod, UI) => {
   };
 
   const doneTaskCtrl = e => {
-    let taskID, taskStatus, content, ticked;
+    let taskID, taskStatus, content, ticked, curFilter;
     // Get task ID
     taskID = e.target.parentNode.parentNode.id;
     // console.log(taskID);
@@ -249,10 +266,46 @@ const appCtrl = ((mod, UI) => {
     content = e.target.parentNode.children[1];
     // Get ticked icon
     ticked = e.target;
+    // get current filter
+    curFilter =
+      ticked.parentNode.parentNode.parentNode.parentNode.children[1].children[2]
+        .value;
     // Change status in UI & model
     UI.taskDone(taskStatus, content, ticked);
     mod.changeStatusInModel(taskID);
     // Calculate & render new report
+    reportCtrl();
+    // remove all
+    UI.removeAllTasks();
+    // Calculate all
+    const filtedTasks = mod.filtedTaskArr();
+    // render filted task
+    if (curFilter === "all") {
+      UI.renderFiltedTasks(filtedTasks.allTaskArr);
+    } else if (curFilter === "done") {
+      UI.renderFiltedTasks(filtedTasks.doneArr);
+    } else if (curFilter === "remain") {
+      UI.renderFiltedTasks(filtedTasks.remainArr);
+    }
+    // setup event again
+    setupEventListener();
+  };
+
+  const clearDoneTasksCtrl = e => {
+    e.preventDefault();
+    // Get done task id to delete
+    const doneTasksArr = mod.calDoneTask();
+    const doneTasksID = [];
+    doneTasksArr.map(item => {
+      doneTasksID.push(item.ID);
+    });
+    // delete task done in model
+    doneTasksID.map(item => mod.delTaskInModel(item));
+    // Remove all Tasks
+    UI.removeAllTasks();
+    // Render remain tasks to UI
+    renderLocalStorageCtrl();
+    // Re-calculate report and render report
     reportCtrl();
   };
 
@@ -298,6 +351,8 @@ const appCtrl = ((mod, UI) => {
     } else if (curFilter === "remain") {
       UI.renderFiltedTasks(filtedTasks.remainArr);
     }
+    // Setup event listener to sorted items
+    setupEventListener();
   };
 
   const renderLocalStorageCtrl = () => {

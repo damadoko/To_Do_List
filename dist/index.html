@@ -19,6 +19,7 @@
                     <button class="app-add" type="button"></button>
                 </form>
                 <form class="app-filter">
+                    <button class="clear-all">Clear Done Task</button>
                     <label for="type">Filter by:</label>
                     <select name="type" id="filter-select">
                         <option id="option-0" value="all">All tasks</option>
@@ -30,17 +31,19 @@
                     class="app-wrapper"><!-- Tasks -->
                 </div>
                 <div class="app-report">
-                    <div class="report">
-                        <input id="total" value="">
-                        <p>Total tasks</p>
-                    </div>
-                    <div class="report">
-                        <input id="completed" value="">
-                        <p>Completed tasks</p>
-                    </div>
-                    <div class="report">
-                        <input id="remaining" value="">
-                        <p>Remaning tasks</p>
+                    <div class="app-report-wrapper">
+                        <div class="report">
+                            <input id="total" value="" disabled="disabled">
+                            <p>Total tasks</p>
+                        </div>
+                        <div class="report">
+                            <input id="completed" value="" disabled="disabled">
+                            <p>Completed tasks</p>
+                        </div>
+                        <div class="report">
+                            <input id="remaining" value="" disabled="disabled">
+                            <p>Remaning tasks</p>
+                        </div>
                     </div>
                 </div>
             </div>

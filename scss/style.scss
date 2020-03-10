@@ -4,6 +4,8 @@ $text-color: #030303;
 $font: "Montserrat", sans-serif;
 $done-color: #d2d2d2;
 $max-width: 600px;
+$tablet-width: 992px;
+$mobile-width: 480px;
 
 * {
   margin: 0;
@@ -40,13 +42,17 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
+  height: 10vh;
   text-transform: uppercase;
   margin-bottom: 2rem;
   border-bottom: 2px solid $secondary-color;
   transition: all 0.5s ease;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
   h1 {
-    padding: 2rem 7rem;
+    padding-left: 7rem;
   }
   &:hover {
     transform: scale(1.1);
@@ -61,23 +67,29 @@ body {
   // justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
+  height: 85vh;
   margin: 0 0.5rem;
   position: relative;
 
   &-filter {
     margin-top: 1rem;
-    display: block !important;
+    display: flex !important;
     text-align: right;
+    justify-content: space-between;
   }
 
   &-report {
     position: fixed;
-    bottom: 10vh;
+    bottom: 5vh;
     margin-top: 1rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+    &-wrapper {
+      width: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
 
     .report {
       // display: flex;
@@ -170,7 +182,8 @@ body {
   }
   &-add {
     position: relative;
-    width: 10%;
+    width: 50px;
+    height: 50px;
     display: inline-block;
     padding: 1rem;
     margin-left: 1rem;
@@ -221,4 +234,43 @@ body {
   bottom: 0;
   width: 100%;
   height: 100%;
+}
+ 
+@media screen and (max-width: $tablet-width) {
+  #main-header {
+    h1 {
+      padding: .5rem 2rem;
+    }
+  }
+  .app {
+    &-wrapper {
+      max-height: 50vh;
+    }
+
+    &-report {
+      bottom: 0;
+      &-wrapper {
+        display: block;
+       
+        // display: block;
+        // background-color: #030303;
+      }
+      .report {
+        align-items: center;
+        margin: 0;
+        border-bottom: 1px solid $done-color;
+  
+        input {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $mobile-width) {
+  .app {
+    &-wrapper {
+      max-height: 40vh;
+    }
+  }  
 }
