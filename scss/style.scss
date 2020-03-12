@@ -1,5 +1,5 @@
 $primary-color: #ffffff;
-$secondary-color: #61C08D;
+$secondary-color: #61c08d;
 $text-color: #030303;
 $font: "Montserrat", sans-serif;
 $done-color: #d2d2d2;
@@ -36,6 +36,17 @@ body {
   color: $done-color;
 }
 
+.clear-all {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: $secondary-color;
+  color: $primary-color;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
 // main styling
 #main-header {
   position: relative;
@@ -59,7 +70,6 @@ body {
     border-color: $text-color;
   }
 }
-
 
 .app {
   display: flex;
@@ -88,7 +98,6 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-
     }
 
     .report {
@@ -120,7 +129,7 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: .5rem;
+      padding: 0.5rem;
       border-bottom: 1px solid $done-color;
       transition: all 0.4s ease-in-out;
       width: 100%;
@@ -158,7 +167,7 @@ body {
 
       .fa-times {
         color: $done-color;
-        margin-right: .5rem;
+        margin-right: 0.5rem;
         transition: all 0.25s ease-in-out;
         &:hover {
           transform: rotate(90deg) scale(1.5);
@@ -195,38 +204,38 @@ body {
 
     &::before {
       position: absolute;
-      content: '';
+      content: "";
       top: 50%;
       left: 30%;
       height: 4px;
       width: 40%;
       background-color: $primary-color;
-      transition: all .7s ease-in-out;
+      transition: all 0.7s ease-in-out;
       transform: translateY(-2px);
     }
 
     &::after {
       position: absolute;
-      content: '';
+      content: "";
       top: 50%;
       left: 30%;
       height: 4px;
       width: 40%;
       background-color: $primary-color;
-      transition: all .7s ease-in-out;
+      transition: all 0.7s ease-in-out;
       transform: translateY(-2px) rotate(90deg);
     }
 
     &:hover::before {
-      transform: translateY(-2px) rotate(180deg)
+      transform: translateY(-2px) rotate(180deg);
     }
     &:hover::after {
-      transform: translateY(-2px) rotate(270deg)
+      transform: translateY(-2px) rotate(270deg);
     }
   }
 }
 
-#myVideo { 
+#myVideo {
   position: absolute;
   top: 0;
   left: 0;
@@ -235,11 +244,11 @@ body {
   width: 100%;
   height: 100%;
 }
- 
+
 @media screen and (max-width: $tablet-width) {
   #main-header {
     h1 {
-      padding: .5rem 2rem;
+      padding: 0.5rem 2rem;
     }
   }
   .app {
@@ -251,7 +260,7 @@ body {
       bottom: 0;
       &-wrapper {
         display: block;
-       
+
         // display: block;
         // background-color: #030303;
       }
@@ -259,7 +268,7 @@ body {
         align-items: center;
         margin: 0;
         border-bottom: 1px solid $done-color;
-  
+
         input {
           font-size: 1.5rem;
         }
@@ -272,5 +281,5 @@ body {
     &-wrapper {
       max-height: 40vh;
     }
-  }  
+  }
 }

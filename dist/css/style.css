@@ -21,6 +21,15 @@ body {
 .text-red {
   color: #d2d2d2; }
 
+.clear-all {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: #61c08d;
+  color: #ffffff;
+  transition: all 0.4s ease-in-out; }
+  .clear-all:hover {
+    transform: scale(1.1); }
+
 #main-header {
   position: relative;
   top: 0;
@@ -29,7 +38,7 @@ body {
   height: 10vh;
   text-transform: uppercase;
   margin-bottom: 2rem;
-  border-bottom: 2px solid #61C08D;
+  border-bottom: 2px solid #61c08d;
   transition: all 0.5s ease;
   display: flex;
   justify-content: flex-start;
@@ -83,7 +92,7 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: .5rem;
+      padding: 0.5rem;
       border-bottom: 1px solid #d2d2d2;
       transition: all 0.4s ease-in-out;
       width: 100%; }
@@ -100,7 +109,7 @@ body {
         text-align: center;
         justify-content: center;
         align-items: center;
-        color: #61C08D; }
+        color: #61c08d; }
       .app-wrapper .task-content {
         margin-left: 2rem;
         overflow: hidden;
@@ -108,10 +117,10 @@ body {
         border: 0;
         background: transparent;
         font-size: 1.25rem;
-        color: #61C08D; }
+        color: #61c08d; }
       .app-wrapper .task .fa-times {
         color: #d2d2d2;
-        margin-right: .5rem;
+        margin-right: 0.5rem;
         transition: all 0.25s ease-in-out;
         display: none; }
         .app-wrapper .task .fa-times:hover {
@@ -133,29 +142,29 @@ body {
     padding: 1rem;
     margin-left: 1rem;
     border-radius: 50%;
-    background: #61C08D;
+    background: #61c08d;
     transition: all 0.4s ease;
     font-size: 1.3rem;
     font-weight: bold; }
     .app-add::before {
       position: absolute;
-      content: '';
+      content: "";
       top: 50%;
       left: 30%;
       height: 4px;
       width: 40%;
       background-color: #ffffff;
-      transition: all .7s ease-in-out;
+      transition: all 0.7s ease-in-out;
       transform: translateY(-2px); }
     .app-add::after {
       position: absolute;
-      content: '';
+      content: "";
       top: 50%;
       left: 30%;
       height: 4px;
       width: 40%;
       background-color: #ffffff;
-      transition: all .7s ease-in-out;
+      transition: all 0.7s ease-in-out;
       transform: translateY(-2px) rotate(90deg); }
     .app-add:hover::before {
       transform: translateY(-2px) rotate(180deg); }
@@ -173,7 +182,7 @@ body {
 
 @media screen and (max-width: 992px) {
   #main-header h1 {
-    padding: .5rem 2rem; }
+    padding: 0.5rem 2rem; }
   .app-wrapper {
     max-height: 50vh; }
   .app-report {
